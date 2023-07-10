@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -57,6 +57,26 @@ function Section({children, title}: SectionProps): JSX.Element {
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const [dataPokemon, setDataPokemon] = useState([]);
+
+  useEffect(() => {
+    const setData = async () => {
+      try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
+        const dataToState = await response.json();
+
+        setDataPokemon(dataToState);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    setData();
+  }, []);
+
+  useEffect(() => {
+    console.log('DATA POKEMONS :', dataPokemon);
+  }, [dataPokemon]);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
