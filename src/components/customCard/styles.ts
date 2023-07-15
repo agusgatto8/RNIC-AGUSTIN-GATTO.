@@ -10,7 +10,7 @@ export default StyleSheet.create({
     padding: 5,
     backgroundColor: 'mediumpurple',
     marginBottom: 5,
-    borderRadius: 10,
+    borderRadius: 20,
   },
 
   title: {
@@ -24,5 +24,21 @@ export default StyleSheet.create({
     padding: 5,
     fontSize: 18,
     fontWeight: '600',
+  },
+
+  complete: {
+    padding: 5,
+    backgroundColor: 'mediumpurple',
+    marginBottom: 20,
+    borderRadius: 20,
+    alignItems: 'center',
+  },
+
+  noComplete: {
+    padding: 5,
+    backgroundColor: 'silver',
+    marginBottom: 20,
+    borderRadius: 20,
+    alignItems: 'center',
   },
 });

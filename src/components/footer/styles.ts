@@ -28,7 +28,7 @@ export default StyleSheet.create({
   button: {
     padding: 7,
     borderWidth: 1,
-    backgroundColor: 'darkorchid',
+    backgroundColor: 'rebeccapurple',
     marginBottom: 10,
     width: '60%',
     borderRadius: 10,

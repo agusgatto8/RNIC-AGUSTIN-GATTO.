@@ -1,36 +1,27 @@
-import React from 'react';
-// import type {PropsWithChildren} from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 
 import {CustomCard} from './src/components/customCard';
 import {Footer} from './src/components/footer';
+import {cardInterface} from './src/types/card';
 
 function App(): JSX.Element {
-  const cardsNumbers = 50;
-  const cards = [...Array(cardsNumbers).fill('')];
+  // const cardsNumbers = 15;
+  const [cards, setCards] = useState<cardInterface[]>([]);
   return (
     <SafeAreaView style={styles.sectionContainer}>
       <FlatList
         style={styles.flatList}
         data={cards}
-        renderItem={() => (
+        renderItem={({item, index}) => (
           <CustomCard
-            title="Problematica 3"
-            description="Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem"
+            title={item.title}
+            description={item.description}
+            titleNumber={index}
           />
         )}
       />
-      <Footer />
+      <Footer handleSubmit={formData => setCards([...cards, formData])} />
     </SafeAreaView>
   );
 }
@@ -54,6 +45,7 @@ const styles = StyleSheet.create({
   },
   flatList: {
     paddingHorizontal: 24,
+    marginTop: 2,
   },
 });
 
