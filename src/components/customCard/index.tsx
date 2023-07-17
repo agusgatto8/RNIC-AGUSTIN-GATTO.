@@ -20,7 +20,9 @@ export const CustomCard = ({
         <Text style={styles.title}>
           {title} {titleNumber}
         </Text>
-        <Text style={styles.text}>{description}</Text>
+        <Text numberOfLines={3} style={styles.text}>
+          {description}
+        </Text>
         <Text style={styles.text}>{state ? 'Complete' : 'No complete'}</Text>
       </View>
     </TouchableOpacity>

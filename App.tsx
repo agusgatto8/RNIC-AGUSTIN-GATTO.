@@ -1,13 +1,25 @@
-import React, {useState} from 'react';
-import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {AppState, FlatList, SafeAreaView, StyleSheet} from 'react-native';
 
 import {CustomCard} from './src/components/customCard';
 import {Footer} from './src/components/footer';
 import {cardInterface} from './src/types/card';
 
 function App(): JSX.Element {
-  // const cardsNumbers = 15;
+  const [appState, setAppState] = useState('');
   const [cards, setCards] = useState<cardInterface[]>([]);
+
+  useEffect(() => {
+    const clearList = AppState.addEventListener('change', nextAppState => {
+      setAppState(nextAppState);
+      if (appState != 'active') {
+        setCards([]);
+      }
+    });
+    return () => {
+      clearList.remove();
+    };
+  });
   return (
     <SafeAreaView style={styles.sectionContainer}>
       <FlatList
@@ -28,7 +40,7 @@ function App(): JSX.Element {
 const styles = StyleSheet.create({
   sectionContainer: {
     // paddingHorizontal: 24,
-    backgroundColor: 'lavender',
+    backgroundColor: '#4A235A',
     flex: 1,
   },
   sectionTitle: {

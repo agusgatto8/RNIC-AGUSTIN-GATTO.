@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {Text, View, TextInput, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import styles from './styles';
 import {cardInterface} from '../../types/card';
 
@@ -18,22 +25,25 @@ export const Footer = ({handleSubmit}: FooterProps): JSX.Element => {
   };
 
   return (
-    <View style={styles.footer}>
-      <TextInput
-        onChangeText={setTitle}
-        value={title}
-        placeholder="Title"
-        style={styles.inputs}
-      />
-      <TextInput
-        onChangeText={setDescription}
-        value={description}
-        placeholder="Description"
-        style={styles.inputs}
-      />
-      <TouchableOpacity onPress={() => executeHandle()} style={styles.button}>
-        <Text style={styles.textButton}>Save</Text>
-      </TouchableOpacity>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <View style={styles.footer}>
+        <TextInput
+          onChangeText={setTitle}
+          value={title}
+          placeholder="Title"
+          style={styles.inputs}
+        />
+        <TextInput
+          onChangeText={setDescription}
+          value={description}
+          placeholder="Description"
+          style={styles.inputs}
+        />
+        <TouchableOpacity onPress={() => executeHandle()} style={styles.button}>
+          <Text style={styles.textButton}>Save</Text>
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView>
   );
 };

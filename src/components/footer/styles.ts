@@ -10,7 +10,7 @@ export default StyleSheet.create({
     borderColor: 'grey',
     paddingTop: 20,
     alignItems: 'center',
-    backgroundColor: 'silver',
+    backgroundColor: '#D1F2EB',
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
   },

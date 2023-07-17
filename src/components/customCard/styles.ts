@@ -15,30 +15,35 @@ export default StyleSheet.create({
 
   title: {
     padding: 5,
-    fontSize: 24,
+    fontSize: 26,
     color: 'white',
-    fontWeight: '600',
+    fontWeight: '800',
+    fontStyle: 'italic',
+    justifyContent: 'flex-start',
   },
 
   text: {
-    padding: 5,
+    padding: 7,
     fontSize: 18,
+    color: 'white',
     fontWeight: '600',
+    marginTop: 10,
   },
 
   complete: {
     padding: 5,
-    backgroundColor: 'mediumpurple',
+    backgroundColor: '#7D3C98',
     marginBottom: 20,
-    borderRadius: 20,
-    alignItems: 'center',
+    borderRadius: 25,
+    // alignItems: 'center',
+    height: 200,
   },
 
   noComplete: {
     padding: 5,
-    backgroundColor: 'silver',
+    backgroundColor: '#F06292',
     marginBottom: 20,
-    borderRadius: 20,
-    alignItems: 'center',
+    borderRadius: 25,
+    height: 200,
   },
 });
