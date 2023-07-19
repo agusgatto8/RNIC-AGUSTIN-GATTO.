@@ -4,22 +4,25 @@ import {AppState, FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {CustomCard} from './src/components/customCard';
 import {Footer} from './src/components/footer';
 import {cardInterface} from './src/types/card';
+import {tasks} from './src/constants/tasks';
 
 function App(): JSX.Element {
+  const card = tasks;
   const [appState, setAppState] = useState('');
-  const [cards, setCards] = useState<cardInterface[]>([]);
+  const [cards, setCards] = useState<cardInterface[]>([card]);
 
   useEffect(() => {
     const clearList = AppState.addEventListener('change', nextAppState => {
       setAppState(nextAppState);
-      if (appState != 'active') {
+      if (appState === 'background') {
         setCards([]);
       }
     });
     return () => {
       clearList.remove();
     };
-  });
+  }, [appState, card]);
+
   return (
     <SafeAreaView style={styles.sectionContainer}>
       <FlatList
@@ -40,7 +43,7 @@ function App(): JSX.Element {
 const styles = StyleSheet.create({
   sectionContainer: {
     // paddingHorizontal: 24,
-    backgroundColor: '#4A235A',
+    backgroundColor: '#EDE7F6',
     flex: 1,
   },
   sectionTitle: {

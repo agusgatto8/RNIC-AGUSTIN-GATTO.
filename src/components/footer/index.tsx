@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Text,
   View,
@@ -18,6 +18,13 @@ export const Footer = ({handleSubmit}: FooterProps): JSX.Element => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+  const inputTitle = useRef<TextInput | null>(null);
+  const inputDescription = useRef<TextInput | null>(null);
+
+  const handleInputSubmit = () => {
+    inputDescription.current!.focus();
+  };
+
   const executeHandle = () => {
     handleSubmit({title, description, state: false});
     setTitle('');
@@ -29,12 +36,15 @@ export const Footer = ({handleSubmit}: FooterProps): JSX.Element => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.footer}>
         <TextInput
+          ref={inputTitle}
+          onSubmitEditing={handleInputSubmit}
           onChangeText={setTitle}
           value={title}
           placeholder="Title"
           style={styles.inputs}
         />
         <TextInput
+          ref={inputDescription}
           onChangeText={setDescription}
           value={description}
           placeholder="Description"
