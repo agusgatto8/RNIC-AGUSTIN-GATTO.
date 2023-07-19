@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {AppState, FlatList, SafeAreaView, StyleSheet} from 'react-native';
+import {
+  AppState,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  StatusBar,
+  Platform,
+} from 'react-native';
 
 import {CustomCard} from './src/components/customCard';
 import {Footer} from './src/components/footer';
@@ -8,8 +16,12 @@ import {tasks} from './src/constants/tasks';
 
 function App(): JSX.Element {
   const card = tasks;
+
   const [appState, setAppState] = useState('');
   const [cards, setCards] = useState<cardInterface[]>([card]);
+
+  const emptyList = <Text style={styles.emptyList}>No data here!</Text>;
+  const android = Platform.OS === 'android';
 
   useEffect(() => {
     const clearList = AppState.addEventListener('change', nextAppState => {
@@ -25,9 +37,11 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={styles.sectionContainer}>
+      <StatusBar barStyle={android ? 'light-content' : 'dark-content'} />
       <FlatList
         style={styles.flatList}
         data={cards}
+        ListEmptyComponent={emptyList}
         renderItem={({item, index}) => (
           <CustomCard
             title={item.title}
@@ -40,9 +54,9 @@ function App(): JSX.Element {
     </SafeAreaView>
   );
 }
+
 const styles = StyleSheet.create({
   sectionContainer: {
-    // paddingHorizontal: 24,
     backgroundColor: '#EDE7F6',
     flex: 1,
   },
@@ -61,6 +75,12 @@ const styles = StyleSheet.create({
   flatList: {
     paddingHorizontal: 24,
     marginTop: 2,
+  },
+  emptyList: {
+    color: 'black',
+    fontSize: 24,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
 
