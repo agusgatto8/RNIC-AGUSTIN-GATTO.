@@ -1,125 +1,64 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React, {useEffect, useState} from 'react';
-import type {PropsWithChildren} from 'react';
 import {
+  AppState,
+  FlatList,
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
-  View,
+  StatusBar,
+  Platform,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import {CustomCard} from './src/components/customCard';
+import {Footer} from './src/components/footer';
+import {cardInterface} from './src/types/card';
+import {tasks} from './src/constants/tasks';
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  const [dataPokemon, setDataPokemon] = useState([]);
+  const card = tasks;
+
+  const [appState, setAppState] = useState('');
+  const [cards, setCards] = useState<cardInterface[]>([card]);
+
+  const emptyList = <Text style={styles.emptyList}>No data here!</Text>;
+  const android = Platform.OS === 'android';
 
   useEffect(() => {
-    const setData = async () => {
-      try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
-        const dataToState = await response.json();
-
-        setDataPokemon(dataToState);
-      } catch (error) {
-        console.log(error);
+    const clearList = AppState.addEventListener('change', nextAppState => {
+      setAppState(nextAppState);
+      if (appState === 'background') {
+        setCards([]);
       }
+    });
+    return () => {
+      clearList.remove();
     };
-
-    setData();
-  }, []);
-
-  useEffect(() => {
-    console.log('DATA POKEMONS :', dataPokemon);
-  }, [dataPokemon]);
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  }, [appState, card]);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <SafeAreaView style={styles.sectionContainer}>
+      <StatusBar barStyle={android ? 'light-content' : 'dark-content'} />
+      <FlatList
+        style={styles.flatList}
+        data={cards}
+        ListEmptyComponent={emptyList}
+        renderItem={({item, index}) => (
+          <CustomCard
+            title={item.title}
+            description={item.description}
+            titleNumber={index}
+          />
+        )}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+      <Footer handleSubmit={formData => setCards([...cards, formData])} />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    backgroundColor: '#EDE7F6',
+    flex: 1,
   },
   sectionTitle: {
     fontSize: 24,
@@ -132,6 +71,16 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  flatList: {
+    paddingHorizontal: 24,
+    marginTop: 2,
+  },
+  emptyList: {
+    color: 'black',
+    fontSize: 24,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
 
