@@ -8,6 +8,7 @@ import {
   StatusBar,
   Platform,
 } from 'react-native';
+import RNBootSplash from 'react-native-bootsplash';
 
 import {CustomCard} from './src/components/customCard';
 import {Footer} from './src/components/footer';
@@ -34,6 +35,10 @@ function App(): JSX.Element {
       clearList.remove();
     };
   }, [appState, card]);
+
+  useEffect(() => {
+    RNBootSplash.hide({fade: true});
+  }, []);
 
   return (
     <SafeAreaView style={styles.sectionContainer}>
