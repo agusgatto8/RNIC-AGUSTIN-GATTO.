@@ -1,30 +1,41 @@
 import React, {useState} from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
-import styles from './styles';
+import {TouchableOpacity} from 'react-native';
+import {
+  CardContainer,
+  ContainerImage,
+  Image,
+  TextDescription,
+  TextState,
+  TitleCard,
+} from './styles';
 
 interface CustomCardsProps {
   title: string;
   description: string;
   titleNumber: number;
+  image: string;
 }
-
 export const CustomCard = ({
   title,
   description,
   titleNumber,
+  image,
 }: CustomCardsProps): JSX.Element => {
   const [state, setState] = useState<boolean>(false);
   return (
     <TouchableOpacity onPress={() => setState(!state)}>
-      <View style={state ? styles.complete : styles.noComplete}>
-        <Text style={styles.title}>
+      <CardContainer state={state}>
+        <TitleCard>
           {title} {titleNumber}
-        </Text>
-        <Text numberOfLines={3} style={styles.text}>
-          {description}
-        </Text>
-        <Text style={styles.text}>{state ? 'Complete' : 'No complete'}</Text>
-      </View>
+        </TitleCard>
+        {image ? (
+          <ContainerImage>
+            <Image alt={'image_task'} source={image} />
+          </ContainerImage>
+        ) : null}
+        <TextDescription numberOfLines={3}>{description}</TextDescription>
+        <TextState>{state ? 'Complete' : 'No complete'}</TextState>
+      </CardContainer>
     </TouchableOpacity>
   );
 };

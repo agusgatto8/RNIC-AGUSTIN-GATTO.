@@ -1,49 +1,42 @@
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-export default StyleSheet.create({
-  wrap: {
-    flex: 1,
-    backgroundColor: 'red',
-  },
+export const CardContainer = styled.View`
+  background-color: ${(props: {state: boolean}) =>
+    props.state ? '#7D3C98' : '#F06292'};
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+`;
 
-  view: {
-    padding: 5,
-    backgroundColor: 'mediumpurple',
-    marginBottom: 5,
-    borderRadius: 20,
-  },
+export const TitleCard = styled.Text`
+  padding: 5px;
+  font-size: 26px;
+  color: white;
+  font-weight: 800;
+  font-style: italic;
+`;
 
-  title: {
-    padding: 5,
-    fontSize: 26,
-    color: 'white',
-    fontWeight: '800',
-    fontStyle: 'italic',
-    justifyContent: 'flex-start',
-  },
+export const TextDescription = styled.Text`
+  padding: 7px;
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+`;
 
-  text: {
-    padding: 7,
-    fontSize: 18,
-    color: 'white',
-    fontWeight: '600',
-    marginTop: 10,
-  },
+export const TextState = styled.Text`
+  padding: 7px;
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+`;
+export const ContainerImage = styled.View`
+  align-items: center;
+  padding: 15px;
+`;
 
-  complete: {
-    padding: 5,
-    backgroundColor: '#7D3C98',
-    marginBottom: 20,
-    borderRadius: 25,
-    // alignItems: 'center',
-    height: 200,
-  },
-
-  noComplete: {
-    padding: 5,
-    backgroundColor: '#F06292',
-    marginBottom: 20,
-    borderRadius: 25,
-    height: 200,
-  },
-});
+export const Image = styled.Image`
+  width: 200px;
+  height: 200px;
+`;

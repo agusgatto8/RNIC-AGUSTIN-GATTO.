@@ -1,13 +1,6 @@
 import React, {useRef, useState} from 'react';
-import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
-import styles from './styles';
+import {TextInput, KeyboardAvoidingView, Platform} from 'react-native';
+import {ButtonSubmit, FooterContainer, Input, TextButton} from './styles';
 import {cardInterface} from '../../types/card';
 
 interface FooterProps {
@@ -34,26 +27,24 @@ export const Footer = ({handleSubmit}: FooterProps): JSX.Element => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <View style={styles.footer}>
-        <TextInput
+      <FooterContainer>
+        <Input
           ref={inputTitle}
           onSubmitEditing={handleInputSubmit}
           onChangeText={setTitle}
           value={title}
           placeholder="Title"
-          style={styles.inputs}
         />
-        <TextInput
+        <Input
           ref={inputDescription}
           onChangeText={setDescription}
           value={description}
           placeholder="Description"
-          style={styles.inputs}
         />
-        <TouchableOpacity onPress={() => executeHandle()} style={styles.button}>
-          <Text style={styles.textButton}>Save</Text>
-        </TouchableOpacity>
-      </View>
+        <ButtonSubmit onPress={() => executeHandle()}>
+          <TextButton>Save</TextButton>
+        </ButtonSubmit>
+      </FooterContainer>
     </KeyboardAvoidingView>
   );
 };
