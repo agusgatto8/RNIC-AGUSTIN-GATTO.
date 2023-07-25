@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const CardContainer = styled.View`
   background-color: ${(props: {state: boolean}) =>
-    props.state ? '#7D3C98' : '#F06292'};
+    props.state ? 'white' : 'white'};
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 25px;
@@ -11,7 +11,7 @@ export const CardContainer = styled.View`
 export const TitleCard = styled.Text`
   padding: 5px;
   font-size: 26px;
-  color: white;
+  color: black;
   font-weight: 800;
   font-style: italic;
 `;
@@ -19,7 +19,7 @@ export const TitleCard = styled.Text`
 export const TextDescription = styled.Text`
   padding: 7px;
   font-size: 18px;
-  color: white;
+  color: black;
   font-weight: 600;
   margin-top: 10px;
 `;
@@ -39,4 +39,20 @@ export const ContainerImage = styled.View`
 export const Image = styled.Image`
   width: 200px;
   height: 200px;
+`;
+export const ContainerButtons = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
+`;
+
+export const CheckerContainer = styled.TouchableOpacity`
+  padding: 10px;
+`;
+
+export const EditBtnContainer = styled.TouchableOpacity`
+  padding: 10px;
+`;
+
+export const DeleteBtnContainer = styled.TouchableOpacity`
+  padding: 10px;
 `;
