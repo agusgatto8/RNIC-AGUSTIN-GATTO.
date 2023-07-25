@@ -21,11 +21,12 @@ export const Input = styled.TextInput`
 `;
 
 export const ButtonSubmit = styled.TouchableOpacity`
-  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   border-width: 1px;
-  background-color: purple;
+  background-color: blueviolet;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 7px;
   width: 60%;
 `;
@@ -34,4 +35,8 @@ export const TextButton = styled.Text`
   font-size: 20px;
   font-weight: 600;
   color: white;
+`;
+
+export const CheckContainer = styled.View`
+  padding: 5px 0px 0px 5px;
 `;

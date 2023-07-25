@@ -1,11 +1,12 @@
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.View`
-  background-color: ${(props: {state: boolean}) =>
-    props.state ? 'white' : 'white'};
+  background-color: white;
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 25px;
+  border: ${(props: {state: boolean}) =>
+    props.state ? 'green 5px' : 'red 5px'};
 `;
 
 export const TitleCard = styled.Text`
