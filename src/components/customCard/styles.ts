@@ -40,6 +40,7 @@ export const ContainerImage = styled.View`
 export const Image = styled.Image`
   width: 200px;
   height: 200px;
+  border-radius: 50px;
 `;
 export const ContainerButtons = styled.View`
   flex-direction: row;
