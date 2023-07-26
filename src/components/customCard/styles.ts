@@ -13,25 +13,17 @@ export const TitleCard = styled.Text`
   padding: 5px;
   font-size: 26px;
   color: black;
-  font-weight: 800;
-  font-style: italic;
+  font-family: 'Lato-Bold';
 `;
 
 export const TextDescription = styled.Text`
   padding: 7px;
-  font-size: 18px;
+  font-size: 20px;
   color: black;
-  font-weight: 600;
   margin-top: 10px;
+  font-family: 'Lato-BoldItalic';
 `;
 
-export const TextState = styled.Text`
-  padding: 7px;
-  font-size: 18px;
-  color: white;
-  font-weight: 600;
-  margin-top: 10px;
-`;
 export const ContainerImage = styled.View`
   align-items: center;
   padding: 15px;

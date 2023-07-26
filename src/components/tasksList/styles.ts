@@ -12,6 +12,6 @@ export const List = styled.FlatList`
 
 export const ListEmpty = styled.Text`
   font-size: 28px;
-  font-weight: 600;
   color: black;
+  font-family: 'Lato-Bold';
 `;

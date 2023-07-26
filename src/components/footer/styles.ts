@@ -14,10 +14,10 @@ export const Input = styled.TextInput`
   background-color: white;
   border-radius: 10px;
   font-size: 18px;
-  font-weight: 600;
   margin-bottom: 10px;
   padding: 7px;
   width: 80%;
+  font-family: 'Lato-Bold';
 `;
 
 export const ButtonSubmit = styled.TouchableOpacity`
@@ -32,9 +32,9 @@ export const ButtonSubmit = styled.TouchableOpacity`
 `;
 
 export const TextButton = styled.Text`
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 22px;
   color: white;
+  font-family: 'Lato-Bold';
 `;
 
 export const CheckContainer = styled.View`
