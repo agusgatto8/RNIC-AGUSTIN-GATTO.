@@ -9,7 +9,6 @@ import {
   EditBtnContainer,
   Image,
   TextDescription,
-  TextState,
   TitleCard,
 } from './styles';
 import Checker from '../../assets/icons/check-circle.svg';
@@ -30,6 +29,7 @@ export const CustomCard = ({
   image,
 }: CustomCardsProps): JSX.Element => {
   const [state, setState] = useState<boolean>(false);
+
   return (
     <TouchableOpacity>
       <CardContainer state={state}>
