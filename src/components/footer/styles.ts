@@ -1,43 +1,42 @@
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-export default StyleSheet.create({
-  wrap: {
-    flex: 1,
-  },
+export const FooterContainer = styled.View`
+  align-items: center;
+  border-top-width: 1px;
+  border-color: grey;
+  background-color: #d1c4e9;
+  border-radius: 20px 20px 0px 0px;
+  padding-top: 20px;
+`;
 
-  footer: {
-    borderTopWidth: 1,
-    borderColor: 'grey',
-    paddingTop: 20,
-    alignItems: 'center',
-    backgroundColor: '#D1C4E9',
-    borderTopStartRadius: 20,
-    borderTopEndRadius: 20,
-  },
+export const Input = styled.TextInput`
+  border-width: 1px;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 7px;
+  width: 79%;
+  font-family: 'Lato-Bold';
+`;
 
-  inputs: {
-    padding: 7,
-    borderWidth: 1,
-    backgroundColor: 'white',
-    borderRadius: 10,
-    width: '80%',
-    marginBottom: 10,
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  button: {
-    padding: 7,
-    borderWidth: 1,
-    backgroundColor: 'rebeccapurple',
-    marginBottom: 10,
-    width: '60%',
-    borderRadius: 10,
-    alignItems: 'center',
-  },
+export const ButtonSubmit = styled.TouchableOpacity`
+  justify-content: center;
+  flex-direction: row;
+  border-width: 1px;
+  background-color: blueviolet;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 7px;
+  width: 60%;
+`;
 
-  textButton: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: 'white',
-  },
-});
+export const TextButton = styled.Text`
+  font-size: 22px;
+  color: white;
+  font-family: 'Lato-Bold';
+`;
+
+export const CheckContainer = styled.View`
+  padding: 5px 0px 0px 5px;
+`;

@@ -1,49 +1,52 @@
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-export default StyleSheet.create({
-  wrap: {
-    flex: 1,
-    backgroundColor: 'red',
-  },
+export const CardContainer = styled.View`
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  border: ${(props: {state: boolean}) =>
+    props.state ? 'green 5px' : 'red 5px'};
+`;
 
-  view: {
-    padding: 5,
-    backgroundColor: 'mediumpurple',
-    marginBottom: 5,
-    borderRadius: 20,
-  },
+export const TitleCard = styled.Text`
+  padding: 5px;
+  font-size: 26px;
+  color: black;
+  font-family: 'Lato-Bold';
+`;
 
-  title: {
-    padding: 5,
-    fontSize: 26,
-    color: 'white',
-    fontWeight: '800',
-    fontStyle: 'italic',
-    justifyContent: 'flex-start',
-  },
+export const TextDescription = styled.Text`
+  padding: 7px;
+  font-size: 20px;
+  color: black;
+  margin-top: 10px;
+  font-family: 'Lato-BoldItalic';
+`;
 
-  text: {
-    padding: 7,
-    fontSize: 18,
-    color: 'white',
-    fontWeight: '600',
-    marginTop: 10,
-  },
+export const ContainerImage = styled.View`
+  align-items: center;
+  padding: 15px;
+`;
 
-  complete: {
-    padding: 5,
-    backgroundColor: '#7D3C98',
-    marginBottom: 20,
-    borderRadius: 25,
-    // alignItems: 'center',
-    height: 200,
-  },
+export const Image = styled.Image`
+  width: 200px;
+  height: 200px;
+  border-radius: 50px;
+`;
+export const ContainerButtons = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
+`;
 
-  noComplete: {
-    padding: 5,
-    backgroundColor: '#F06292',
-    marginBottom: 20,
-    borderRadius: 25,
-    height: 200,
-  },
-});
+export const CheckerContainer = styled.TouchableOpacity`
+  padding: 10px;
+`;
+
+export const EditBtnContainer = styled.TouchableOpacity`
+  padding: 10px;
+`;
+
+export const DeleteBtnContainer = styled.TouchableOpacity`
+  padding: 10px;
+`;
